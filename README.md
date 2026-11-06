@@ -4,7 +4,7 @@ VoiceLens AI 将批量用户评论自动转化为问题分布、重点 Pain Poin
 
 ## 在线演示
 
-- 项目介绍：https://fhhhh34890-droid.github.io/voicelens-ai/
+- 项目介绍：https://fhh34890.github.io/hhub/
 - 真实分析报告：`demo/dashboard.html`
 
 ## 核心流程
