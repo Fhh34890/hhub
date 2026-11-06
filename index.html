@@ -3,224 +3,185 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="VoiceLens AI：把批量用户反馈转化为问题分布、重点痛点与可行动建议。">
-  <meta name="theme-color" content="#f5f8fc">
-  <title>VoiceLens AI｜AI 用户反馈分析 Agent</title>
+  <meta name="description" content="VoiceLens AI：将用户反馈转化为问题分布、重点痛点与可行动建议。">
+  <title>VoiceLens AI · 用户反馈分析</title>
   <link rel="stylesheet" href="styles.css">
   <script defer src="script.js"></script>
 </head>
 <body>
   <header class="site-header">
-    <a class="brand" href="#top" aria-label="VoiceLens AI 首页">
-      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-      <span><strong>VoiceLens</strong> <em>AI</em></span>
+    <a class="brand" href="/" aria-label="VoiceLens AI 首页">
+      <span class="brand-mark" aria-hidden="true">
+        <span></span><span></span><span></span><span></span>
+      </span>
+      <span>
+        <strong>VoiceLens</strong><em>AI</em>
+      </span>
     </a>
-    <nav aria-label="页面导航">
-      <a href="#demo">在线体验</a>
-      <a href="#value">产品价值</a>
-      <a href="#workflow">工作流程</a>
-      <a href="#iteration">产品迭代</a>
-      <a href="https://github.com/Fhh34890/hhub" target="_blank" rel="noopener">GitHub</a>
-      <a class="nav-cta" href="demo/dashboard.html">查看报告</a>
-    </nav>
+    <div class="local-badge"><span></span>公开作品版</div>
   </header>
 
-  <main id="top">
-    <section class="hero">
-      <div class="hero-copy">
-        <p class="eyebrow">AI USER FEEDBACK ANALYSIS AGENT</p>
-        <h1>从用户声音中，找到<br><span>下一步真正该解决的问题。</span></h1>
-        <p class="lead">VoiceLens AI 将批量评论自动转化为问题分布、重点 Pain Points 与针对性行动建议，帮助产品和运营人员更快完成从“看评论”到“做决策”的第一轮分析。</p>
-        <div class="hero-actions">
-          <a class="button primary" href="demo/dashboard.html">查看真实分析报告 <span>↗</span></a>
-          <a class="button secondary" href="#workflow">了解完整流程</a>
-        </div>
-        <div class="hero-flow" aria-label="核心价值链">
-          <span>Where<small>问题在哪里</small></span>
-          <b>→</b>
-          <span>What<small>优先关注什么</small></span>
-          <b>→</b>
-          <span>How<small>下一步怎么做</small></span>
-        </div>
-      </div>
-      <div class="hero-product">
-        <div class="browser-frame">
-          <div class="browser-bar"><span></span><span></span><span></span><p>VoiceLens AI · Local Workspace</p></div>
-          <img src="assets/voicelens_home.png" alt="VoiceLens AI CSV 上传与自动分析页面" loading="eager">
-        </div>
-        <div class="floating-card">
-          <span>真实样本验证</span>
-          <strong>500 条评论</strong>
-          <small>分类失败 0 条</small>
-        </div>
+  <main>
+    <section class="hero" aria-labelledby="page-title">
+      <p class="eyebrow">AI USER FEEDBACK ANALYSIS</p>
+      <h1 id="page-title">从用户声音中，找到<br><span>下一步真正该解决的问题。</span></h1>
+      <p class="hero-copy">上传评论数据，自动完成标签生成、反馈分类、Pain Point 识别、Top 10 筛选和改进建议。</p>
+      <div class="hero-flow" aria-label="分析流程">
+        <span>问题分布 <b>Where</b></span><i></i>
+        <span>重点痛点 <b>What</b></span><i></i>
+        <span>行动建议 <b>How</b></span>
       </div>
     </section>
 
-    <section class="proof" aria-label="项目结果概览">
-      <article><strong>500</strong><span>条公开 App Store 评论</span></article>
-      <article><strong>81.8%</strong><span>可行动反馈占比</span></article>
-      <article><strong>238</strong><span>个完整 Pain Points</span></article>
-      <article><strong>Top 10</strong><span>重点问题与行动建议</span></article>
-    </section>
-
-    <section id="demo" class="public-demo section" aria-labelledby="demo-title">
-      <div class="section-heading compact">
-        <div><p class="eyebrow">INTERACTIVE DEMO</p><h2 id="demo-title">体验从上传文件开始</h2></div>
-        <p>公开演示版允许在浏览器中选择和预览 CSV，但不会上传或调用模型。点击开始分析时会显示权限说明，你的 API Key 与费用不会暴露。</p>
-      </div>
-      <div class="demo-workspace">
-        <article class="upload-card">
-          <div class="workspace-heading"><span>01</span><h3>上传反馈文件</h3><a href="template.csv" download>下载 CSV 模板 ↓</a></div>
-          <label id="dropZone" class="drop-zone" for="csvFile">
-            <input id="csvFile" type="file" accept=".csv,text/csv" hidden>
-            <span class="upload-symbol" aria-hidden="true">↑</span>
-            <strong>拖放 CSV 文件到这里</strong>
-            <p>或点击选择文件</p>
-            <small>演示版仅在当前浏览器读取 · 文件不会上传</small>
-          </label>
-          <div id="fileResult" class="file-result" hidden aria-live="polite">
-            <span class="csv-badge">CSV</span>
-            <div><strong id="selectedName">—</strong><small id="selectedMeta">—</small></div>
-            <em>本地校验</em>
-            <button id="removeFile" type="button" aria-label="移除文件">×</button>
+    <section class="workspace-grid">
+      <article class="panel upload-panel" aria-labelledby="upload-title">
+        <div class="panel-heading">
+          <div>
+            <span class="step-number">01</span>
+            <h2 id="upload-title">上传反馈文件</h2>
           </div>
-          <div id="validationMetrics" class="validation-metrics" hidden>
-            <div><span>估算记录</span><strong id="recordCount">—</strong></div>
-            <div><span>文件大小</span><strong id="fileSize">—</strong></div>
-            <div><span>文件类型</span><strong>CSV</strong></div>
-            <div><span>数据处理</span><strong>仅浏览器</strong></div>
-          </div>
-        </article>
-        <aside class="permission-card">
-          <span class="step-label">公开体验说明</span>
-          <h3>为什么不能直接运行？</h3>
-          <p>完整分析会调用模型 API。公开版关闭真实调用，避免密钥泄露、恶意消耗和陌生数据被保存。</p>
-          <ul>
-            <li>可以体验 CSV 选择与本地校验</li>
-            <li>可以查看真实500条评论分析结果</li>
-            <li>不会上传或存储访问者文件</li>
-          </ul>
-          <a href="demo/dashboard.html">查看示例 Dashboard →</a>
-        </aside>
-      </div>
-      <div class="mode-panel">
-        <div class="workspace-heading"><span>02</span><h3>选择标签方式并开始</h3></div>
-        <div class="mode-options" role="radiogroup" aria-label="标签方式演示">
-          <label class="mode-option selected"><input type="radio" name="labelMode" checked><span>✦</span><strong>自动生成</strong><p>基于本批反馈自动生成并冻结标签。</p><em>推荐</em></label>
-          <label class="mode-option"><input type="radio" name="labelMode"><span>↻</span><strong>使用上次标签</strong><p>复用最近一次已确认标签。</p></label>
-          <label class="mode-option"><input type="radio" name="labelMode"><span>◎</span><strong>先预览标签</strong><p>生成后先查看定义与边界。</p></label>
+          <a class="text-link" href="template.csv" download>下载 CSV 模板 <span aria-hidden="true">↓</span></a>
         </div>
-        <div class="start-row"><p>公开演示不会把所选文件发送到任何服务器。</p><button id="startDemo" type="button" disabled>开始分析 <span>→</span></button></div>
-      </div>
-    </section>
 
-    <section id="value" class="section value-section">
-      <div class="section-heading">
-        <div><p class="eyebrow">PRODUCT VALUE</p><h2>不是简单总结评论，而是形成决策入口</h2></div>
-        <p>产品将分散的用户声音整理成三层信息，减少产品和运营人员在大量文本中反复阅读、归类和提炼的时间。</p>
-      </div>
-      <div class="value-grid">
-        <article class="value-card">
-          <span class="card-index">01 / WHERE</span>
-          <div class="icon distribution" aria-hidden="true"><i></i><i></i><i></i></div>
-          <h3>看清问题分布</h3>
-          <p>统计各问题类别的评论数量与占比，并把反馈性质分布与问题频率分开呈现。</p>
-        </article>
-        <article class="value-card featured">
-          <span class="card-index">02 / WHAT</span>
-          <div class="icon focus" aria-hidden="true"><i></i></div>
-          <h3>识别重点痛点</h3>
-          <p>综合影响程度、支持频率和证据质量，从完整 Pain Point 池中筛选最值得关注的 Top 10。</p>
-        </article>
-        <article class="value-card">
-          <span class="card-index">03 / HOW</span>
-          <div class="icon action" aria-hidden="true">↗</div>
-          <h3>给出行动方向</h3>
-          <p>针对每个重点痛点生成 Recommended Action、Reason 和进一步验证事项，辅助人工决策。</p>
-        </article>
-      </div>
-    </section>
+        <div id="dropZone" class="drop-zone" tabindex="0" role="button" aria-controls="fileInput">
+          <input id="fileInput" type="file" accept=".csv,text/csv" hidden>
+          <div class="upload-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5M5 14v4a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-4"/></svg>
+          </div>
+          <p><strong>拖放 CSV 文件到这里</strong></p>
+          <p>或 <button id="browseButton" type="button" class="inline-button">选择文件</button></p>
+          <small>单次最多 500 条有效评论 · 文件不超过 5 MB</small>
+        </div>
 
-    <section id="workflow" class="section workflow-section">
-      <div class="section-heading compact">
-        <div><p class="eyebrow">END-TO-END WORKFLOW</p><h2>一份 CSV，自动完成完整分析</h2></div>
-        <p>用户上传文件并选择标签方式后，Agent 自动衔接各阶段；每次运行拥有独立 Run ID 和结果目录。</p>
-      </div>
-      <ol class="workflow">
-        <li><span>01</span><div><strong>导入与校验</strong><p>识别正文列、编码与有效评论，生成标准化输入。</p></div></li>
-        <li><span>02</span><div><strong>动态标签</strong><p>基于本批代表性反馈生成标签，也可复用或先预览确认。</p></div></li>
-        <li><span>03</span><div><strong>批量分类</strong><p>系统自动分批调用模型，降低长请求超时风险。</p></div></li>
-        <li><span>04</span><div><strong>Pain Point 识别</strong><p>只从具体问题与功能诉求中提取可行动痛点。</p></div></li>
-        <li><span>05</span><div><strong>Top 10 与建议</strong><p>综合影响、频率和证据，输出优先关注项与建议。</p></div></li>
-        <li><span>06</span><div><strong>Dashboard</strong><p>自动生成 Where、What、How 三层可视化报告。</p></div></li>
-      </ol>
-    </section>
+        <div id="fileSummary" class="file-summary is-hidden" aria-live="polite">
+          <div class="file-type">CSV</div>
+          <div class="file-meta">
+            <strong id="fileName"></strong>
+            <span id="fileSize"></span>
+          </div>
+          <span id="fileStatus" class="status-pill">正在校验</span>
+          <button id="removeFile" class="icon-button" type="button" aria-label="移除文件">×</button>
+        </div>
 
-    <section class="section demo-section">
-      <div class="demo-copy">
-        <p class="eyebrow">REAL OUTPUT</p>
-        <h2>500 条真实评论的分析结果</h2>
-        <p>示例报告来自一次完整运行：500 条有效评论全部完成分类，识别 238 个完整痛点，并展示综合关注度最高的 10 项及对应行动建议。</p>
-        <ul>
-          <li>问题类别频率与反馈性质分开呈现</li>
-          <li>Top Pain Points 保留频率、影响与证据语境</li>
-          <li>Recommendation 与重点痛点一一对应</li>
+        <div id="message" class="message is-hidden" role="alert"></div>
+
+        <div id="validationResult" class="validation is-hidden">
+          <div class="metric-row">
+            <div><span>读取记录</span><strong id="inputRecords">—</strong></div>
+            <div><span>有效评论</span><strong id="validRecords">—</strong></div>
+            <div><span>正文列</span><strong id="textColumn">—</strong></div>
+            <div><span>文件编码</span><strong id="fileEncoding">—</strong></div>
+          </div>
+          <details class="preview-block">
+            <summary>查看前 10 条标准化预览</summary>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Comment ID</th><th>Text</th></tr></thead>
+                <tbody id="previewBody"></tbody>
+              </table>
+            </div>
+          </details>
+          <div id="warnings" class="warnings is-hidden"></div>
+        </div>
+      </article>
+
+      <aside class="panel guide-panel" aria-labelledby="guide-title">
+        <span class="step-number">使用说明</span>
+        <h2 id="guide-title">上传前请确认</h2>
+        <ul class="check-list">
+          <li><span>1</span><div><strong>文件格式</strong><p>当前支持 CSV，兼容 UTF-8、UTF-8 BOM 与 GB18030。</p></div></li>
+          <li><span>2</span><div><strong>评论正文</strong><p>推荐字段名 <code>text</code>；也可自动识别 review、comment、content、评论内容等。</p></div></li>
+          <li><span>3</span><div><strong>其他字段</strong><p><code>comment_id</code> 缺失时自动生成；rating 可选；额外列不会导致失败。</p></div></li>
         </ul>
-        <a class="button primary" href="demo/dashboard.html">打开完整 Dashboard <span>↗</span></a>
-      </div>
-      <a class="dashboard-preview" href="demo/dashboard.html" aria-label="打开完整 Dashboard">
-        <img src="assets/voicelens_dashboard.png" alt="VoiceLens AI 500条评论分析 Dashboard" loading="lazy">
-        <span>点击查看完整报告 ↗</span>
-      </a>
+        <div class="privacy-note">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 5 6v5c0 4.6 2.7 8 7 10 4.3-2 7-5.4 7-10V6l-7-3Z"/><path d="m9.5 12 1.6 1.6 3.7-4"/></svg>
+          <div><strong>公开版说明</strong><p>选择的文件只在当前浏览器中读取，不会上传或保存。真实模型分析仅在作者授权的本地环境中运行。</p></div>
+        </div>
+      </aside>
     </section>
 
-    <section id="iteration" class="section iteration-section">
-      <div class="section-heading compact">
-        <div><p class="eyebrow">PRODUCT ITERATION</p><h2>从分析脚本到可复用 Agent</h2></div>
-        <p>项目的关键迭代不是堆功能，而是持续校正服务对象、输入方式、分析粒度和输出价值。</p>
+    <section id="analysisSetup" class="panel setup-panel is-hidden" aria-labelledby="setup-title">
+      <div class="panel-heading">
+        <div><span class="step-number">02</span><h2 id="setup-title">选择标签方式并开始</h2></div>
       </div>
-      <div class="timeline">
-        <article><span>V0.1</span><h3>MVP 分析流程</h3><p>完成固定标签分类、问题统计、Pain Point、Priority 与 Recommendation。</p></article>
-        <article><span>V0.2</span><h3>可视化决策层</h3><p>增加问题频率、重点痛点与行动建议 Dashboard，形成 Where–What–How。</p></article>
-        <article><span>V0.3</span><h3>Reusable Agent</h3><p>统一 CSV 入口、配置、重试、运行状态和唯一 Run ID，实现单命令自动运行。</p></article>
-        <article><span>V0.4</span><h3>产品定位校正</h3><p>从外卖菜品评价转向 App 产品评论，服务对象与数据来源重新对齐。</p></article>
-        <article><span>V0.5</span><h3>动态标签与网页端</h3><p>支持自动生成、复用、预览标签；增加上传校验、进度展示和历史报告。</p></article>
-        <article><span>V0.6</span><h3>大批量可靠性</h3><p>分类与痛点识别采用系统内部批处理和有限重试，用户仍只需上传一次。</p></article>
+      <div class="mode-grid" role="radiogroup" aria-label="标签方式">
+        <label class="mode-card is-selected">
+          <input type="radio" name="labelsMode" value="auto" checked>
+          <span class="mode-icon">✦</span>
+          <strong>自动生成</strong>
+          <p>根据本批反馈生成并冻结标签，随后自动完成全部分析。</p>
+          <em>推荐</em>
+        </label>
+        <label class="mode-card">
+          <input type="radio" name="labelsMode" value="reuse">
+          <span class="mode-icon">↻</span>
+          <strong>使用上次标签</strong>
+          <p>复用最近一次已确认标签，适合同类产品的连续分析。</p>
+        </label>
+        <label class="mode-card">
+          <input type="radio" name="labelsMode" value="preview">
+          <span class="mode-icon">◎</span>
+          <strong>先预览标签</strong>
+          <p>生成后暂停，查看标签定义与边界，确认后继续。</p>
+        </label>
+      </div>
+      <div class="setup-actions">
+        <p>公开作品链接用于展示产品流程；真实模型调用需要作者授权。</p>
+        <button id="startAnalysis" class="primary-button" type="button">开始分析 <span>→</span></button>
       </div>
     </section>
 
-    <section class="section boundaries">
-      <div><p class="eyebrow">SCOPE & LIMITS</p><h2>把 AI 放在辅助决策的位置</h2></div>
-      <div class="boundary-grid">
-        <article><strong>已实现</strong><p>CSV 自动校验、动态标签、批量分类、Pain Point、Top 10、建议、进度与静态报告。</p></article>
-        <article><strong>仍需人工判断</strong><p>频率不等于业务优先级；建议需结合公司战略、成本、复现情况和业务数据确认。</p></article>
-        <article><strong>后续方向</strong><p>建立人工标注集验证分类准确率，增加跨批次趋势映射、权限控制与云端持久化。</p></article>
+    <section id="progressPanel" class="panel progress-panel is-hidden" aria-labelledby="progress-title">
+      <div class="progress-heading">
+        <div><span class="step-number">03</span><h2 id="progress-title">分析进度</h2></div>
+        <strong id="progressPercent">0%</strong>
       </div>
+      <div class="progress-track"><span id="progressBar"></span></div>
+      <p id="stageLabel" class="stage-label">正在准备分析任务</p>
+      <ol class="stage-list">
+        <li data-threshold="8"><span></span>准备数据</li>
+        <li data-threshold="18"><span></span>生成标签</li>
+        <li data-threshold="24"><span></span>分类反馈</li>
+        <li data-threshold="54"><span></span>识别痛点</li>
+        <li data-threshold="88"><span></span>生成建议</li>
+        <li data-threshold="96"><span></span>生成报告</li>
+      </ol>
+      <div id="progressError" class="message error is-hidden" role="alert"></div>
     </section>
 
-    <section class="closing">
-      <p class="eyebrow">VOICE OF USER → ACTION</p>
-      <h2>让每一条用户反馈，都能进入更清晰的产品决策。</h2>
-      <p>本页面为求职作品集公开演示版；真实分析 Agent 在本地运行，避免公开模型密钥和用户上传数据。</p>
-      <a class="button primary light" href="demo/dashboard.html">查看分析成果 <span>↗</span></a>
+    <section id="labelReview" class="panel review-panel is-hidden" aria-labelledby="review-title">
+      <div class="panel-heading">
+        <div><span class="step-number">标签确认</span><h2 id="review-title">检查本批反馈标签</h2></div>
+      </div>
+      <p class="section-intro">标签已经通过结构校验并冻结。确认后，分析会在同一个 Run 中继续。</p>
+      <div id="labelCards" class="label-grid"></div>
+      <div class="review-actions"><button id="confirmLabels" class="primary-button" type="button">确认并继续分析 <span>→</span></button></div>
+    </section>
+
+    <section id="resultPanel" class="panel result-panel is-hidden" aria-labelledby="result-title">
+      <div class="result-copy">
+        <span class="success-mark">✓</span>
+        <div><span class="step-number">分析完成</span><h2 id="result-title">Dashboard 已生成</h2><p id="resultRunId"></p></div>
+      </div>
+      <a id="openReport" class="primary-button" href="#" target="_blank" rel="noopener">打开分析报告 <span>↗</span></a>
+    </section>
+
+    <section class="history-section" aria-labelledby="history-title">
+      <div class="section-heading">
+        <div><p class="eyebrow">LOCAL HISTORY</p><h2 id="history-title">历史分析</h2></div>
+        <p>结果保存在本机，每次运行都有独立 Run ID，不覆盖历史数据。</p>
+      </div>
+      <div class="history-list">
+        <article class="history-item">
+          <div class="history-status complete"></div>
+          <div><strong>APPSTORE-500-DEMO</strong><span>500 条公开 App Store 评论分析样本</span></div>
+          <div class="history-meta"><span>500 条</span><span>auto</span></div>
+          <a href="demo/dashboard.html" target="_blank" rel="noopener">查看 Dashboard →</a>
+        </article>
+      </div>
     </section>
   </main>
 
-  <div id="permissionModal" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <div class="modal-backdrop" data-close-modal></div>
-    <div class="modal-card">
-      <button class="modal-close" type="button" data-close-modal aria-label="关闭">×</button>
-      <span class="lock-icon" aria-hidden="true">◇</span>
-      <p class="eyebrow">DEMO ACCESS</p>
-      <h2 id="modalTitle">公开演示版无模型调用权限</h2>
-      <p>你选择的 CSV 没有被上传或保存。完整 Agent 需要作者配置的模型 API，仅在受控环境中运行。</p>
-      <div class="modal-actions"><a class="button primary" href="demo/dashboard.html">查看真实分析结果</a><button type="button" class="button secondary" data-close-modal>返回体验页面</button></div>
-    </div>
-  </div>
-
-  <footer>
-    <span><strong>VoiceLens</strong> AI</span>
-    <p><a href="https://github.com/Fhh34890/hhub" target="_blank" rel="noopener">GitHub Repository ↗</a> · AI Product Operations Portfolio · 2026</p>
-  </footer>
+  <footer><span>VoiceLens AI</span><p>Public portfolio · Local feedback intelligence workspace</p></footer>
 </body>
 </html>
